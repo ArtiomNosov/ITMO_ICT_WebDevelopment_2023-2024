@@ -1,0 +1,23 @@
+a.external-link {
+  direction: ltr;
+  display: inline-block;
+}
+
+a.external-link::after {
+  content: "\00A0[↪]";
+}
+
+.md-typeset .mdx-switch button {
+    cursor: pointer;
+    transition:opacity .25s
+}
+
+.md-typeset .mdx-switch button:focus, .md-typeset .mdx-switch button:hover {
+    opacity:.75
+}
+
+.md-typeset .mdx-switch button > code {
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+    display: block;
+}

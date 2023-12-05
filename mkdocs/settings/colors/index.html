@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Цветовая палитра - Лабораторные работы</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../../css/custom.css" rel="stylesheet">
+        <link href="../../../css/palette.scss" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+     <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Лабораторные работы</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="https://github.com/kinsl/ITMO_ICT_WebDevelopment/edit/master/docs/mkdocs/settings/colors.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Цветовая палитра</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">Цветовая палитра</h1>
+<h4 id="_2">Цветовая схема</h4>
+<p>Material for MkDocs поддерживает две цветовые схемы: светлую (значение <code>default</code>) и тёмную (значение <code>slate</code>). 
+Чтобы выбрать цветовую схему, используйте следующий код:</p>
+<pre><code class="language-yaml">theme:
+  palette:
+    scheme: slate
+</code></pre>
+<p>Нажмите на кнопки, чтобы изменить цветовую схему:</p>
+<div class="mdx-switch">
+  <button data-md-color-scheme="default"><code>default</code></button>
+  <button data-md-color-scheme="slate"><code>slate</code></button>
+</div>
+
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-scheme]")
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      document.body.setAttribute("data-md-color-switching", "")
+      var attr = this.getAttribute("data-md-color-scheme")
+      document.body.setAttribute("data-md-color-scheme", attr)
+      var name = document.querySelector("#__code_0 code span.l")
+      name.textContent = attr
+      setTimeout(function() {
+        document.body.removeAttribute("data-md-color-switching")
+      })
+    })
+  })
+</script>
+
+<h4 id="_3">Основной цвет</h4>
+<p>Основной цвет используется в шапке сайта, текстовых ссылках и в некоторых других компонентах. Чтобы его изменить, 
+нужно поменять следующее значение на одно из доступных:</p>
+<pre><code class="language-yaml">theme:
+  palette:
+    primary: black
+</code></pre>
+<p>Нажмите на кнопки, чтобы изменить основной цвет:</p>
+<div class="mdx-switch">
+  <button data-md-color-primary="red"><code>red</code></button>
+  <button data-md-color-primary="pink"><code>pink</code></button>
+  <button data-md-color-primary="purple"><code>purple</code></button>
+  <button data-md-color-primary="deep-purple"><code>deep purple</code></button>
+  <button data-md-color-primary="indigo"><code>indigo</code></button>
+  <button data-md-color-primary="blue"><code>blue</code></button>
+  <button data-md-color-primary="light-blue"><code>light blue</code></button>
+  <button data-md-color-primary="cyan"><code>cyan</code></button>
+  <button data-md-color-primary="teal"><code>teal</code></button>
+  <button data-md-color-primary="green"><code>green</code></button>
+  <button data-md-color-primary="light-green"><code>light green</code></button>
+  <button data-md-color-primary="lime"><code>lime</code></button>
+  <button data-md-color-primary="yellow"><code>yellow</code></button>
+  <button data-md-color-primary="amber"><code>amber</code></button>
+  <button data-md-color-primary="orange"><code>orange</code></button>
+  <button data-md-color-primary="deep-orange"><code>deep orange</code></button>
+  <button data-md-color-primary="brown"><code>brown</code></button>
+  <button data-md-color-primary="grey"><code>grey</code></button>
+  <button data-md-color-primary="blue-grey"><code>blue grey</code></button>
+  <button data-md-color-primary="black"><code>black</code></button>
+  <button data-md-color-primary="white"><code>white</code></button>
+</div>
+
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-primary]")
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-primary")
+      document.body.setAttribute("data-md-color-primary", attr)
+      var name = document.querySelector("#__code_1 code span.l")
+      name.textContent = attr.replace("-", " ")
+    })
+  })
+</script>
+
+<h4 id="_4">Акцентный цвет</h4>
+<p>Акцентный цвет используется для выделения элементов, с которыми можно взаимодействовать, например, ссылок при наведении, 
+кнопок, колеса прокрутки. Чтобы его изменить, нужно поменять следующее значение на одно из доступных:</p>
+<pre><code class="language-yaml">theme:
+  palette:
+    accent: indigo
+</code></pre>
+<p>Нажмите на кнопки, чтобы изменить акцентный цвет:</p>
+<style>
+  .md-typeset button[data-md-color-accent] > code {
+    background-color: var(--md-code-bg-color);
+    color: var(--md-accent-fg-color);
+  }
+</style>
+
+<div class="mdx-switch">
+  <button data-md-color-accent="red"><code>red</code></button>
+  <button data-md-color-accent="pink"><code>pink</code></button>
+  <button data-md-color-accent="purple"><code>purple</code></button>
+  <button data-md-color-accent="deep-purple"><code>deep purple</code></button>
+  <button data-md-color-accent="indigo"><code>indigo</code></button>
+  <button data-md-color-accent="blue"><code>blue</code></button>
+  <button data-md-color-accent="light-blue"><code>light blue</code></button>
+  <button data-md-color-accent="cyan"><code>cyan</code></button>
+  <button data-md-color-accent="teal"><code>teal</code></button>
+  <button data-md-color-accent="green"><code>green</code></button>
+  <button data-md-color-accent="light-green"><code>light green</code></button>
+  <button data-md-color-accent="lime"><code>lime</code></button>
+  <button data-md-color-accent="yellow"><code>yellow</code></button>
+  <button data-md-color-accent="amber"><code>amber</code></button>
+  <button data-md-color-accent="orange"><code>orange</code></button>
+  <button data-md-color-accent="deep-orange"><code>deep orange</code></button>
+</div>
+
+<script>
+  var buttons = document.querySelectorAll("button[data-md-color-accent]")
+  buttons.forEach(function(button) {
+    button.addEventListener("click", function() {
+      var attr = this.getAttribute("data-md-color-accent")
+      document.body.setAttribute("data-md-color-accent", attr)
+      var name = document.querySelector("#__code_2 code span.l")
+      name.textContent = attr.replace("-", " ")
+    })
+  })
+</script>
+
+<h4 id="_5">Переключатель цветовой палитры</h4>
+<p>Можно также добавить переключатель между светлой и тёмной темой:</p>
+<pre><code class="language-yaml">theme:
+  palette:
+
+    # Переключатель для светлой темы
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Переключатель для тёмной темы
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+</code></pre>
+<p>Для каждой цветовой палитры помимо цветовой схемы можно выбрать свои основные и акцентные цвета.</p>
+<p>Следующие свойства должны быть указаны для каждого переключателя:</p>
+<p><code>icon</code>:<br />
+Это свойство должно указывать на существующий путь иконки, встроенный в тему. Популярные решения:</p>
+<ul>
+<li>:material-brightness-7: + :material-brightness-4: – <code>material/brightness-7</code> + <code>material/brightness-4</code></li>
+<li>:material-toggle-switch: + :material-toggle-switch-off-outline: – <code>material/toggle-switch</code> + <code>material/toggle-switch-off-outline</code></li>
+<li>:material-weather-night: + :material-weather-sunny: – <code>material/weather-night</code> + <code>material/weather-sunny</code></li>
+<li>:material-eye: + :material-eye-outline: – <code>material/eye</code> + <code>material/eye-outline</code></li>
+<li>:material-lightbulb: + :material-lightbulb-outline: – <code>material/lightbulb</code> + <code>material/lightbulb-outline</code></li>
+</ul>
+<p>Список всех доступных иконок можно найти <a href="https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search">здесь</a>.</p>
+<p><code>title</code></p>
+<p>Это свойство используется в качестве всплывающей подсказки при наведении на переключатель.</p>
+<h4 id="_6">Системные предпочтения</h4>
+<p>Каждая цветовая палитра может быть связана с системными предпочтениями пользователя в отношении 
+светлых и темных тонов с помощью медиа-запроса. Просто добавьте свойство <code>media</code> рядом с определением схемы:</p>
+<pre><code class="language-yaml">theme:
+  palette:
+
+    # Переключатель для светлой темы
+    - media: &quot;(prefers-color-scheme: light)&quot;
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Переключатель для тёмной темы
+    - media: &quot;(prefers-color-scheme: dark)&quot;
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});</script></body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Расширения и плагины - Лабораторные работы</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <link href="../../../css/custom.css" rel="stylesheet">
+        <link href="../../../css/palette.scss" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+     <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Лабораторные работы</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href="https://github.com/kinsl/ITMO_ICT_WebDevelopment/edit/master/docs/mkdocs/settings/plugins.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#_1" class="nav-link">Расширения и плагины</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="_1">Расширения и плагины</h1>
+<h3 id="_2">Список атрибутов</h3>
+<p>Это расширение позволяет добавлять HTML атрибуты и CSS практически ко всем Markdown элементам на уровне строк и блоков 
+с помощью специального синтаксиса:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - attr_list
+</code></pre>
+<p>Это расширение необходимо для работы многих других расширений и плагинов.</p>
+<h3 id="_3">Кнопка копирования кода</h3>
+<p>В каждом блоке кода появится кнопка для копирования содержимого:</p>
+<pre><code class="language-yaml">theme:
+  features:
+    - content.code.copy
+</code></pre>
+<p>??? info "Включение или отключение кнопки копирования кода для конкретных блоков"</p>
+<pre><code>Если вы не хотите включать кнопку для всех блоков, можно включить её только для конкретного блока, 
+используя немного другой синтаксис, основанный на расширении [Список атрибутов](#_2):
+
+```` yaml
+``` { .yaml .copy }
+# Code block content
+```
+````
+
+Обратите внимание, что сначала должен быть указан шорткод языка блока с дополнительным префиксом `.`. 
+Подобным образом можно отключить кнопку копирования для конкретного блока:
+
+```` { .yaml .no-copy }
+``` { .yaml .no-copy }
+# Code block content
+```
+````
+</code></pre>
+<h3 id="markdown-html">Markdown в HTML</h3>
+<p>По умолчанию Markdown игнорирует содержимое необработанного HTML-элемента блочного уровня. 
+При включенном расширении <code>md-in-html</code> содержимое необработанного элемента блочного уровня HTML 
+может быть распаршено как Markdown при добавлении атрибута <code>markdown</code> в открывающий тег. 
+При этом атрибут <code>markdown</code> будет удален из выходных данных, а все остальные атрибуты будут сохранены:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - md_in_html
+</code></pre>
+<pre><code class="language-html">&lt;div markdown&gt;
+This is a *Markdown* Paragraph.
+&lt;/div&gt;
+</code></pre>
+<h3 id="superfences">SuperFences</h3>
+<p>Расширение позволяет произвольно встраивать блоки кода и контента друг в друга, 
+включая советы, вкладки, списки и любые другие элементы:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.superfences
+</code></pre>
+<p>Это расширение необходимо для работы многих других расширений и плагинов.</p>
+<h3 id="highlight">Highlight</h3>
+<p>Расширение <a href="https://facelessuser.github.io/pymdown-extensions/extensions/highlight/">Highlight</a> добавляет поддержку подсветки синтаксиса в блоках кода (с помощью <a href="#superfences">SuperFences</a>) и 
+во вложенных блоках кода (с помощью <a href="https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/">InlineHilite</a>):</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences 
+  - pymdownx.inlinehilite
+</code></pre>
+<h3 id="_4">Вкладки</h3>
+<p>Расширение <a href="https://facelessuser.github.io/pymdown-extensions/extensions/tabbed/">Tabbed</a> позволяет использовать вкладки контента, простой способ группировки связанного контента и блоков кода:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+</code></pre>
+<h4 id="_5">Использование</h4>
+<pre><code>=== &quot;C&quot;
+
+    ``` c
+    #include &lt;stdio.h&gt;
+
+    int main(void) {
+      printf(&quot;Hello world!\n&quot;);
+      return 0;
+    }
+    ```
+
+=== &quot;C++&quot;
+
+    ``` c++
+    #include &lt;iostream&gt;
+
+    int main(void) {
+      std::cout &lt;&lt; &quot;Hello world!&quot; &lt;&lt; std::endl;
+      return 0;
+    }
+    ```
+</code></pre>
+<div class="result">
+<p>=== "C"</p>
+<pre><code>``` c
+#include &lt;stdio.h&gt;
+
+int main(void) {
+  printf("Hello world!\n");
+  return 0;
+}
+```
+</code></pre>
+<p>=== "C++"</p>
+<pre><code>``` c++
+#include &lt;iostream&gt;
+
+int main(void) {
+  std::cout &lt;&lt; "Hello world!" &lt;&lt; std::endl;
+  return 0;
+}
+```
+</code></pre>
+</div>
+<h3 id="snippets">Snippets</h3>
+<p>Расширение <a href="https://facelessuser.github.io/pymdown-extensions/extensions/snippets/">Snippets</a> позволяет встраивать в документ содержимое других файлов, например, других документов 
+или файлов с исходным кодом:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.snippets
+</code></pre>
+<h4 id="_6">Использование</h4>
+<p>Чтобы встроить содержимое какого-либо файла, нужно написать <code>--8&lt;--</code> и название файла в кавычках:</p>
+<p><code>--8&lt;-- "filename.py"</code></p>
+<p>Для указания, с какой по какую строчку вы хотите встроить содержимое, укажите номер строки начала и номер строки конца 
+после название файла, разделив их с помощью <code>:</code>:</p>
+<ul>
+<li>Чтобы встроить содержимое, начиная с какой-то строки, просто используйте <code>filename.py:3</code></li>
+<li>Чтобы встроить всё содержимое до какой-то строки, используйте <code>filename.py::3</code>. В данном случае встроится с 1 по 3 строку.</li>
+<li>Чтобы встроить содержимое, начиная с какой-то строки и заканчивая другой, используйте <code>filename.py:4:6</code>.</li>
+</ul>
+<h3 id="_7">Советы</h3>
+<p>Советы являются отличным вариантом для добавления побочного контента без существенной перегрузки страницы. 
+Material for MkDocs предоставляет несколько различных типов советов и позволяет встраивать в них произвольный контент.</p>
+<p>Следующие расширения позволяют сделать советы сворачиваемыми и добавлять в них "вложенное" содержимое:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+</code></pre>
+<h4 id="_8">Использование</h4>
+<p>Синтаксис советов прост: блок начинается с <code>!!!</code>, после чего следует одно ключевое слово, 
+используемое в качестве <a href="#_13">классификатора типа</a>. Содержимое блока начинается с пропуском строки и с отступом в четыре пробела:</p>
+<pre><code class="language-markdown">!!! note
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre>
+<div class="result">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.</p>
+</div>
+</div>
+<h4 id="_9">Иконки</h4>
+<p>Каждый поддерживаемый тип советов имеет свою иконку, которую можно изменить на любую другую:</p>
+<pre><code class="language-yaml">theme:
+  icon:
+    admonition:
+      &lt;type&gt;: &lt;icon&gt;
+</code></pre>
+<p>??? example "Раскройте, чтобы посмотреть альтернативные наборы иконок"</p>
+<pre><code>=== ":octicons-mark-github-16: Octicons"
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: octicons/tag-16
+          abstract: octicons/checklist-16
+          info: octicons/info-16
+          tip: octicons/squirrel-16
+          success: octicons/check-16
+          question: octicons/question-16
+          warning: octicons/alert-16
+          failure: octicons/x-circle-16
+          danger: octicons/zap-16
+          bug: octicons/bug-16
+          example: octicons/beaker-16
+          quote: octicons/quote-16
+    ```
+
+
+=== ":fontawesome-brands-font-awesome: FontAwesome"
+
+    ``` yaml
+    theme:
+      icon:
+        admonition:
+          note: fontawesome/solid/note-sticky
+          abstract: fontawesome/solid/book
+          info: fontawesome/solid/circle-info
+          tip: fontawesome/solid/bullhorn
+          success: fontawesome/solid/check
+          question: fontawesome/solid/circle-question
+          warning: fontawesome/solid/triangle-exclamation
+          failure: fontawesome/solid/bomb
+          danger: fontawesome/solid/skull
+          bug: fontawesome/solid/robot
+          example: fontawesome/solid/flask
+          quote: fontawesome/solid/quote-left
+    ```
+</code></pre>
+<h4 id="_10">Изменение заголовка</h4>
+<p>По умолчанию заголовок совета - название типа, но это можно изменить, добавив строку в кавычках в соответствии 
+с Markdown (включая ссылки и форматирование) после определения типа:</p>
+<pre><code class="language-markdown">!!! note &quot;Phasellus posuere in sem ut cursus&quot;
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre>
+<div class="result">
+<div class="admonition note">
+<p class="admonition-title">Phasellus posuere in sem ut cursus</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.</p>
+</div>
+</div>
+<h4 id="_11">Удаление заголовка</h4>
+<p>Аналогично с изменением заголовка, его можно удалить, для этого нужно вставить пустую строку после определения типа
+(не работает для <a href="#_12">раскрываемых блоков</a>):</p>
+<pre><code class="language-markdown">!!! note &quot;&quot;
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre>
+<div class="result">
+<div class="admonition note">
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.</p>
+</div>
+</div>
+<h4 id="_12">Раскрываемые блоки</h4>
+<p>Если включен <code>pymdownx.details</code> и блок совета начинается с <code>???</code>, а не с <code>!!!</code>, то совет рендерится как раскрываемый блок:</p>
+<pre><code class="language-markdown">??? note
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre>
+<div class="result">
+<p>??? note</p>
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+</div>
+<p>Если после <code>???</code> добавить <code>+</code>, блок рендерится сразу раскрытым:</p>
+<pre><code class="language-markdown">???+ note
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+</code></pre>
+<div class="result">
+<p>???+ note</p>
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+massa, nec semper lorem quam in massa.
+</code></pre>
+</div>
+<h4 id="_13">Поддерживаемые типы</h4>
+<p><code>note</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>abstract</code></p>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>info</code></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>tip</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>success</code></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>question</code></p>
+<div class="admonition question">
+<p class="admonition-title">Question</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>warning</code></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>failure</code></p>
+<div class="admonition failure">
+<p class="admonition-title">Failure</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>danger</code></p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>bug</code></p>
+<div class="admonition bug">
+<p class="admonition-title">Bug</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>example</code></p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<p><code>quote</code></p>
+<div class="admonition quote">
+<p class="admonition-title">Quote</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et
+euismod nulla. Curabitur feugiat, tortor non consequat finibus, justo
+purus auctor massa, nec semper lorem quam in massa.</p>
+</div>
+<h3 id="_14">Клавиши</h3>
+<p>Расширение <a href="https://facelessuser.github.io/pymdown-extensions/extensions/keys/">Keys</a> позволяет с использованием простого синтаксиса рендерить клавиши и их сочетания:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.keys
+</code></pre>
+<h4 id="_15">Использование</h4>
+<pre><code class="language-markdown">++ctrl+alt+del++
+</code></pre>
+<div class="result">
+<p>++ctrl+alt+del++</p>
+</div>
+<h3 id="_16">Эмодзи</h3>
+<p>Расширение <a href="https://facelessuser.github.io/pymdown-extensions/extensions/emoji/">Emoji</a> автоматически рендерит текстовые указания на эмодзи:</p>
+<pre><code class="language-yaml">markdown_extensions:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji 
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+</code></pre>
+<h4 id="_17">Использование</h4>
+<pre><code>:smile:
+</code></pre>
+<div class="result">
+<p>:smile:</p>
+</div>
+<pre><code>:fontawesome-regular-face-laugh-wink:
+</code></pre>
+<div class="result">
+<p>:fontawesome-regular-face-laugh-wink:</p>
+</div>
+<h3 id="lightbox">Lightbox</h3>
+<p>Если вы хотите добавить возможность открывать картинки на полный экран и зумить их, <a href="https://github.com/blueswen/mkdocs-glightbox">glightbox</a> плагин - прекрасный выбор. 
+Установите его с помощью <code>pip</code>:</p>
+<pre><code class="language-shell">pip install mkdocs-glightbox
+</code></pre>
+<p>И добавьте в <code>mkdocs.yml</code>:</p>
+<pre><code class="language-yaml">plugins:
+  - glightbox:
+      auto_caption: true
+</code></pre>
+<h4 id="_18">Использование</h4>
+<pre><code>&lt;figure markdown&gt;
+  ![Рандомная картинка](https://dummyimage.com/600x400/eee/aaa)
+  &lt;figcaption&gt;Рандомная картинка&lt;/figcaption&gt;
+&lt;/figure&gt;
+</code></pre>
+<div class="result">
+<figure>
+<p><a class="glightbox" href="https://dummyimage.com/600x400/eee/aaa" data-type="image" data-width="100%" data-height="auto" data-title="Рандомная картинка" data-desc-position="bottom"><img alt="Рандомная картинка" src="https://dummyimage.com/600x400/eee/aaa" /></a>
+  </p>
+<figcaption>Рандомная картинка</figcaption>
+</figure>
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script>const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});</script></body>
+</html>
