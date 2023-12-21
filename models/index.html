@@ -85,93 +85,65 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     name = models.CharField(max_length=200, null=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
     bio = models.TextField(null=True)
 
     avatar = models.ImageField(null=True, default='avatar.svg')
 
-    balance = models.DecimalField(max_digits=20, decimal_places=2, null=False, default=0)
+    objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
 
-class Topic(models.Model):
+class BaseModel(models.Model):
     name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-class Transaction(models.Model):
-    name = models.CharField(max_length=200, null=True)
-    amount = models.DecimalField(max_digits=20, decimal_places=2, null=False, default=0)
-    addition = models.BooleanField(null=False, default=True)
     created = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    updated = models.DateTimeField(auto_now_add=True)
+    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) # TODO: automatic creator setting
 
-class JobStatus(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-class Job(models.Model):
-    name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
-    cost = models.DecimalField(max_digits=20, decimal_places=2, null=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-
-    topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    status = models.ForeignKey(JobStatus, on_delete=models.SET_NULL, null=True)
-
-    class Meta:
-        ordering = ['-updated', '-created']
-
-class MatchType(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-class Match(models.Model):
-    job = models.ForeignKey(Job, on_delete=models.SET_NULL, null=True)
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    created = models.DateTimeField(auto_now_add=True)
-
-    type = models.ForeignKey(MatchType, on_delete=models.SET_NULL, null=True)
-
-    class Meta:
-        ordering = ['-created']
-
-class ReviewType(models.Model):
-    name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.name
-
-class Review(models.Model):
-    rating = models.SmallIntegerField()
-    body = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-
-    match = models.ForeignKey(Match, on_delete=models.CASCADE)
-    type = models.ForeignKey(ReviewType, on_delete=models.SET_NULL, null=True)
-
-    class Meta:
-        ordering = ['-created']
-
-class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    job = models.ForeignKey(Job, on_delete=models.CASCADE)
-    body = models.TextField() 
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-updated', '-created']
 
     def __str__(self):
-        return self.body[0:50]
+        return self.name    
+
+class File(BaseModel):
+    file_field = models.FileField(upload_to=&quot;users-files&quot;)
+
+class ProjectTopic(BaseModel):
+    description = models.TextField(null=True)
+
+class Project(BaseModel):
+    description = models.TextField(null=True)
+    start_date = models.DateTimeField(null=True)
+    end_date = models.DateTimeField(null=True)
+    topics = models.ManyToManyField('ProjectTopic', verbose_name='Темы', related_name='project_topics')
+
+class GradeReport(BaseModel):
+    projects = models.ManyToManyField('Project', verbose_name='Проекты', related_name='gradereport_projects')
+
+class ProjectOfUser(BaseModel):
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Teacher(BaseModel):
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Student(BaseModel): 
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Grade(BaseModel):
+    student_field = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+    grade_field = models.SmallIntegerField()
+
+class ProjectMeeting(BaseModel):
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+
+class Meeting(BaseModel):
+    users_one_field = models.ManyToManyField('User', verbose_name='Люди', related_name='meeting_users')
+
 
 </code></pre></div>
             </div>

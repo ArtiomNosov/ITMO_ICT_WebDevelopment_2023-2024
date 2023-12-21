@@ -80,39 +80,42 @@
 <h1 id="_1">Формы</h1>
 <p>Формы в Django — это классы, которые описывают данные, вводимые пользователем. Из них собираются формы на стороне frontend-а. Они хранятся в файле forms.py внутри приложения.</p>
 <p>В рамках данной лабораторной работы структура этого файла следующая:</p>
-<pre><code class="language-Python">from django.forms import ModelForm
-from django.contrib.auth.forms import UserCreationForm
-from .models import Job, User
-from django import forms
+<pre><code class="language-Python"># *** пока что форм по лабе 3 в файле forms.py нет ***
 
 
-class MyUserCreationForm(UserCreationForm):
-    class Meta:
-        model = User
-        fields = ['name', 'username', 'email', 'password1', 'password2']
-    pass
+# from django.forms import ModelForm
+# from django.contrib.auth.forms import UserCreationForm
+# from .models import Job, User
+# from django import forms
 
 
-class JobForm(ModelForm):
-    class Meta:
-        model = Job
-        fields = ['name', 'description', 'topic', 'cost']
-        exclude = []
-        widgets = {
-            'cost' : forms.TextInput(attrs = {'placeholder': '1000 руб'}),
-        }
+# class MyUserCreationForm(UserCreationForm):
+#     class Meta:
+#         model = User
+#         fields = ['name', 'username', 'email', 'password1', 'password2']
+#     pass
 
 
-class UserForm(ModelForm):
-    class Meta:
-        model = User
-        fields = ['avatar', 'name', 'username', 'email', 'bio']
-        widgets = {
-            'avatar': forms.TextInput(attrs={'placeholder': 'аватар', &quot;title&quot;: &quot;аватар&quot;}),
-            'name': forms.TextInput(attrs={'placeholder': 'имя', &quot;title&quot;: &quot;имя&quot;}),
-            'username': forms.TextInput(attrs={'placeholder': 'логин', &quot;title&quot;: &quot;логин&quot;}),
-            'bio': forms.TextInput(attrs={'placeholder': 'био', &quot;title&quot;: &quot;био&quot;}),
-        }
+# class JobForm(ModelForm):
+#     class Meta:
+#         model = Job
+#         fields = ['name', 'description', 'topic', 'cost']
+#         exclude = []
+#         widgets = {
+#             'cost' : forms.TextInput(attrs = {'placeholder': '1000 руб'}),
+#         }
+
+
+# class UserForm(ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ['avatar', 'name', 'username', 'email', 'bio']
+#         widgets = {
+#             'avatar': forms.TextInput(attrs={'placeholder': 'аватар', &quot;title&quot;: &quot;аватар&quot;}),
+#             'name': forms.TextInput(attrs={'placeholder': 'имя', &quot;title&quot;: &quot;имя&quot;}),
+#             'username': forms.TextInput(attrs={'placeholder': 'логин', &quot;title&quot;: &quot;логин&quot;}),
+#             'bio': forms.TextInput(attrs={'placeholder': 'био', &quot;title&quot;: &quot;био&quot;}),
+#         }
 
 </code></pre></div>
             </div>
