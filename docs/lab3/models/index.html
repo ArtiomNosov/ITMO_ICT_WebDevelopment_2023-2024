@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Models - Web Programming Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Models";
+        var mkdocs_page_input_path = "lab3\\models.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web Programming Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР1</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task1/">Задание 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task2/">Задание 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task3/">Задание 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task4/">Задание 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task5/">Задание 5</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/task/">Задание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/database_setup/">БД</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/forms/">Формы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/models/">Модели</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/views/">Views</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР3</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../task/">Задание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_setup/">БД</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../forms/">Формы</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Models</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../views/">Views</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР4</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab4/task/">Задание</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web Programming Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">ЛР3</li>
+      <li class="breadcrumb-item active">Models</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">Модели</h1>
+<p>Модели в Django — это классы, которые описывают структуру данных. Они хранятся в файле models.py внутри приложения. В рамках данной лабораторной работы структура этого файла следующая:</p>
+<pre><code class="language-Python">from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True)
+    email = models.EmailField(unique=True, blank=True, null=True)
+    bio = models.TextField(null=True)
+
+    avatar = models.ImageField(null=True, default='avatar.svg')
+
+    objects = CustomUserManager()
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+class BaseModel(models.Model):
+    name = models.CharField(max_length=200)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now_add=True)
+    creator = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) # TODO: automatic creator setting
+
+
+    class Meta:
+        ordering = ['-updated', '-created']
+
+    def __str__(self):
+        return self.name    
+
+class File(BaseModel):
+    file_field = models.FileField(upload_to=&quot;users-files&quot;)
+
+class ProjectTopic(BaseModel):
+    description = models.TextField(null=True)
+
+class Project(BaseModel):
+    description = models.TextField(null=True)
+    start_date = models.DateTimeField(null=True)
+    end_date = models.DateTimeField(null=True)
+    topics = models.ManyToManyField('ProjectTopic', verbose_name='Темы', related_name='project_topics')
+
+class GradeReport(BaseModel):
+    projects = models.ManyToManyField('Project', verbose_name='Проекты', related_name='gradereport_projects')
+
+class ProjectOfUser(BaseModel):
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Teacher(BaseModel):
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Student(BaseModel): 
+    user_field = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+
+class Grade(BaseModel):
+    student_field = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+    grade_field = models.SmallIntegerField()
+
+class ProjectMeeting(BaseModel):
+    project_field = models.ForeignKey(Project, on_delete=models.SET_NULL, null=True)
+
+class Meeting(BaseModel):
+    users_one_field = models.ManyToManyField('User', verbose_name='Люди', related_name='meeting_users')
+
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../forms/" class="btn btn-neutral float-left" title="Формы"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../views/" class="btn btn-neutral float-right" title="Views">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../forms/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../views/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

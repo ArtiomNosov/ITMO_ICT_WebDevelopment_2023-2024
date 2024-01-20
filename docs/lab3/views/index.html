@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Views - Web Programming Documentation</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Views";
+        var mkdocs_page_input_path = "lab3\\views.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Web Programming Documentation
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР1</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task1/">Задание 1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task2/">Задание 2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task3/">Задание 3</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task4/">Задание 4</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab1/task5/">Задание 5</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР2</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/task/">Задание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/database_setup/">БД</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/forms/">Формы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/models/">Модели</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab2/views/">Views</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР3</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../task/">Задание</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../database_setup/">БД</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../forms/">Формы</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../models/">Models</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Views</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">ЛР4</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../lab4/task/">Задание</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Web Programming Documentation</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">ЛР3</li>
+      <li class="breadcrumb-item active">Views</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">Представления</h1>
+<p>Представления в Django —это то, что в классическом паттерне MVC называется контроллерами. Это место, где происходит обработка запросов и формирование ответов. Они определяются в файле views.py.</p>
+<p>В рамках данной лабораторной работы структура этого файла следующая:</p>
+<pre><code class="language-Python"># *** пока что представления только с rest api ***
+
+
+from projects.models import File, ProjectTopic, Project, GradeReport, \
+ProjectOfUser, Teacher, Student, Grade, ProjectMeeting, Meeting
+from projects.serializers import *
+
+from rest_framework import generics, permissions
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        # Разрешение только для владельца объекта на редактирование.
+        if request.method in permissions.SAFE_METHODS:
+            return True  # Разрешить любые безопасные (например, GET) запросы.
+        return obj.owner == request.user  # Здесь obj.owner - это поле, содержащее владельца объекта.
+
+# File
+class FileListAPIView(generics.ListAPIView):
+    serializer_class = FileSerializer
+    queryset = File.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class FileDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = FileSerializer
+    queryset = File.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class FileUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = FileSerializer
+    queryset = File.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class FileCreateAPIView(generics.CreateAPIView):
+   serializer_class = FileSerializer
+   queryset = File.objects.all()
+   permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+# ProjectTopic
+class ProjectTopicListAPIView(generics.ListAPIView):
+    serializer_class = ProjectTopicSerializer
+    queryset = ProjectTopic.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+class ProjectTopicDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = ProjectTopicSerializer
+    queryset = ProjectTopic.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectTopicUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = ProjectTopicSerializer
+    queryset = ProjectTopic.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectTopicCreateAPIView(generics.CreateAPIView):
+   serializer_class = ProjectTopicSerializer
+   queryset = ProjectTopic.objects.all()
+   permission_classes = [permissions.IsAdminUser] # TODO
+
+# Project
+class ProjectListAPIView(generics.ListAPIView):
+    serializer_class = ProjectSerializer # ProjectDepthSerializer TODO:
+    queryset = Project.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = ProjectSerializer
+    queryset = Project.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectCreateAPIView(generics.CreateAPIView):
+   serializer_class = ProjectSerializer
+   queryset = Project.objects.all()
+   permission_classes = [permissions.IsAdminUser]
+
+# GradeReport
+class GradeReportListAPIView(generics.ListAPIView):
+    serializer_class = GradeReportSerializer # TODO: GradeReportDepthSerializer
+    queryset = GradeReport.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class GradeReportDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = GradeReportSerializer
+    queryset = GradeReport.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class GradeReportUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = GradeReportSerializer
+    queryset = GradeReport.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class GradeReportCreateAPIView(generics.CreateAPIView):
+   serializer_class = GradeReportSerializer
+   queryset = GradeReport.objects.all()
+   permission_classes = [permissions.IsAdminUser]
+
+# ProjectOfUser
+class ProjectOfUserListAPIView(generics.ListAPIView):
+    serializer_class = ProjectOfUserSerializer # TODO: ProjectOfUserDepthSerializer
+    queryset = ProjectOfUser.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectOfUserDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = ProjectOfUserSerializer
+    queryset = ProjectOfUser.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectOfUserUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = ProjectOfUserSerializer
+    queryset = ProjectOfUser.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class ProjectOfUserCreateAPIView(generics.CreateAPIView):
+   serializer_class = ProjectOfUserSerializer
+   queryset = ProjectOfUser.objects.all()
+   permission_classes = [permissions.IsAdminUser]
+
+# Teacher
+class TeacherListAPIView(generics.ListAPIView):
+    serializer_class = TeacherSerializer # TODO: TeacherDepthSerializer
+    queryset = Teacher.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+class TeacherDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = TeacherSerializer
+    queryset = Teacher.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class TeacherUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = TeacherSerializer
+    queryset = Teacher.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class TeacherCreateAPIView(generics.CreateAPIView):
+   serializer_class = TeacherSerializer
+   queryset = Teacher.objects.all()
+   permission_classes = [permissions.IsAdminUser]
+
+# Student
+class StudentListAPIView(generics.ListAPIView):
+    serializer_class = StudentSerializer # TODO: StudentDepthSerializer
+    queryset = Student.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+
+class StudentDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = StudentSerializer
+    queryset = Student.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class StudentUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = StudentSerializer
+    queryset = Student.objects.all()
+    permission_classes = [permissions.IsAdminUser]
+
+class StudentCreateAPIView(generics.CreateAPIView):
+   serializer_class = StudentSerializer
+   queryset = Student.objects.all()
+   permission_classes = [permissions.IsAdminUser]
+
+# Grade
+class GradeListAPIView(generics.ListAPIView):
+    serializer_class = GradeSerializer # TODO: GradeDepthSerializer
+    queryset = Grade.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class GradeDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = GradeSerializer
+    queryset = Grade.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class GradeUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = GradeSerializer
+    queryset = Grade.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class GradeCreateAPIView(generics.CreateAPIView):
+   serializer_class = GradeSerializer
+   queryset = Grade.objects.all()
+   permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+# ProjectMeeting
+class ProjectMeetingListAPIView(generics.ListAPIView):
+    serializer_class = ProjectMeetingSerializer # TODO: ProjectMeetingDepthSerializer
+    queryset = ProjectMeeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class ProjectMeetingDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = ProjectMeetingSerializer
+    queryset = ProjectMeeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class ProjectMeetingUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = ProjectMeetingSerializer
+    queryset = ProjectMeeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class ProjectMeetingCreateAPIView(generics.CreateAPIView):
+   serializer_class = ProjectMeetingSerializer
+   queryset = ProjectMeeting.objects.all()
+   permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+# Meeting
+class MeetingListAPIView(generics.ListAPIView):
+    serializer_class = MeetingSerializer # TODO: MeetingDepthSerializer
+    queryset = Meeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class MeetingDestroyAPIView(generics.DestroyAPIView):
+    serializer_class = MeetingSerializer
+    queryset = Meeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class MeetingUpdateAPIView(generics.UpdateAPIView):
+    serializer_class = MeetingSerializer
+    queryset = Meeting.objects.all()
+    permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+class MeetingCreateAPIView(generics.CreateAPIView):
+   serializer_class = MeetingSerializer
+   queryset = Meeting.objects.all()
+   permission_classes = [permissions.IsAdminUser, IsOwnerOrReadOnly]
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../models/" class="btn btn-neutral float-left" title="Models"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../lab4/task/" class="btn btn-neutral float-right" title="Задание">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../models/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../lab4/task/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
