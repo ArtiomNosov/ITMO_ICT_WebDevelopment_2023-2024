@@ -1,0 +1,30 @@
+site_name: Web Programming Documentation
+theme: readthedocs 
+
+nav: 
+- Home: index.md
+- ЛР1: 
+  - Задание 1: lab1/task1.md 
+  - Задание 2: lab1/task2.md 
+  - Задание 3: lab1/task3.md
+  - Задание 4: lab1/task4.md 
+  - Задание 5: lab1/task5.md 
+
+- ЛР2: 
+  - Задание: lab2/task.md
+  - БД: lab2/database_setup.md  
+  - Формы: lab2/forms.md 
+  - Модели: lab2/models.md
+  - Views: lab2/views.md
+
+- ЛР3: 
+  - Задание: lab3/task.md
+  - БД: lab3/database_setup.md
+  - Формы: lab3/forms.md
+  - Models: lab3/models.md
+  - Views: lab3/views.md
+
+- ЛР4: 
+  - Задание: lab4/task.md
+
+
