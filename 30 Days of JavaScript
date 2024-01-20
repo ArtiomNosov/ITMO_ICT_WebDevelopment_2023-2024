@@ -436,4 +436,260 @@ var promiseAll = function(functions) {
  * promise.then(console.log); // [42]
  */
 
+# 20) 2727. Is Object Empty
+
+/**
+ * @param {Object|Array} obj
+ * @return {boolean}
+ */
+var isEmpty = function(obj) {
+    for (const x in obj) {
+        return false;
+    }
+    return true;
+};
+
+# 21) 2677. Chunk Array
+
+/**
+ * @param {Array} arr
+ * @param {number} size
+ * @return {Array}
+ */
+var chunk = function(arr, size) {
+    let res = [];
+    for (let i = 0; i < arr.length; i+=size)
+        if (i + size <= arr.length)
+            res.push(arr.slice(i, i + size));
+        else
+            res.push(arr.slice(i, arr.length));
+    
+    return res;
+};
+
+# 22) 2619. Array Prototype Last
+
+/**
+ * @return {null|boolean|number|string|Array|Object}
+ */
+Array.prototype.last = function() {
+    if (this.length)
+        return this[this.length-1];
+    return -1;
+};
+
+/**
+ * const arr = [1, 2, 3];
+ * arr.last(); // 3
+ */
+
+# 23) 2631. Group By
+
+/**
+ * @param {Function} fn
+ * @return {Object}
+ */
+Array.prototype.groupBy = function(fn) {
+    return this.reduce((acc, item) => {
+        const key = fn(item);
+        if (acc[key]) {
+            acc[key].push(item);
+        } else {
+            acc[key] = [item];
+        }
+        return acc;
+    }, {});
+};
+
+/**
+ * [1,2,3].groupBy(String) // {"1":[1],"2":[2],"3":[3]}
+ */
+
+# 24) 2724. Sort By
+
+/**
+ * @param {Array} arr
+ * @param {Function} fn
+ * @return {Array}
+ */
+var sortBy = function(arr, fn) {
+    return arr.sort((a, b) => fn(a) - fn(b));
+};
+
+# 25) 2722. Join Two Arrays by ID
+
+/**
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @return {Array}
+ */
+var join = function(arr1, arr2) {
+    const d = new Map(arr1.map(x => [x.id, x]));
+    arr2.forEach(x => {
+        if (d.has(x.id)) {
+            d.set(x.id, { ...d.get(x.id), ...x });
+        } else {
+            d.set(x.id, x);
+        }
+    });
+    return [...d.values()].sort((a, b) => a.id - b.id);
+};
+
+# 26) 2625. Flatten Deeply Nested Array
+
+/**
+ * @param {Array} arr
+ * @param {number} depth
+ * @return {Array}
+ */
+var flat = function (arr, n) {
+    const res = []
+
+    function dfs(arr, level) {
+        for (const val of arr) {
+            if (typeof val === 'object' && level < n) {
+                dfs(val, level + 1)
+            } 
+            else {
+                res.push(val)
+            }
+        }
+        return res;
+    }
+
+    return dfs(arr, 0)
+};
+
+# 27) 2705. Compact Object
+
+/**
+ * @param {Object|Array} obj
+ * @return {Object|Array}
+ */
+var compactObject = function(obj) {
+    if (Array.isArray(obj)) {
+        const temp = [];
+        for (const item of obj) {
+            if (item) {
+                if (typeof item === 'object') temp.push(compactObject(item));
+                else temp.push(item);
+            }
+        }
+        return temp;
+    }
+    for (const [key, value] of Object.entries(obj)) {
+        if (!value) delete obj[key];
+        else if (typeof value === 'object') obj[key] = compactObject(value);
+    }
+    return obj;
+};
+
+# 28) 2694. Event Emitter
+
+class EventEmitter {
+    d = new Map();
+    /**
+     * @param {string} eventName
+     * @param {Function} callback
+     * @return {Object}
+     */
+    subscribe(eventName, callback) {
+        this.d.set(
+            eventName,
+            (this.d.get(eventName) || new Set()).add(callback),
+        );
+        return {
+            unsubscribe: () => {
+                this.d.get(eventName)?.delete(callback);
+            }
+        };
+    }
+    
+    /**
+     * @param {string} eventName
+     * @param {Array} args
+     * @return {Array}
+     */
+    emit(eventName, args = []) {
+        const callbacks = this.d.get(eventName);
+        if (!callbacks) {
+            return [];
+        }
+        return [...callbacks].map(callback => callback(...args));
+    }
+}
+
+/**
+ * const emitter = new EventEmitter();
+ *
+ * // Subscribe to the onClick event with onClickCallback
+ * function onClickCallback() { return 99 }
+ * const sub = emitter.subscribe('onClick', onClickCallback);
+ *
+ * emitter.emit('onClick'); // [99]
+ * sub.unsubscribe(); // undefined
+ * emitter.emit('onClick'); // []
+ */
+
+# 29) 2695. Array Wrapper
+
+class ArrayWrapper {
+    nums = [];
+    s = null
+
+    constructor(nums) {
+        this.nums = nums;
+        this.s = nums.reduce((a, b) => a + b, 0);
+    }
+
+    valueOf() {
+        return this.s;
+    }
+
+    toString() {
+        return `[${this.nums.join(',')}]`;
+    }
+}
+
+# 30) 2726. Calculator with Method Chaining
+
+class Calculator {
+    x;
+
+    constructor(value) {
+        this.x = value;
+    }
+
+    add(value){
+        this.x += value;
+        return this;
+    }
+
+    subtract(value){
+        this.x -= value;
+        return this;
+    }
+
+    multiply(value){
+        this.x *= value;
+        return this;
+    }
+
+    divide(value){
+        if (value === 0) {
+            throw new Error('Division by zero is not allowed');
+        }
+        this.x /= value;
+        return this;
+    }
+
+    power(value){
+        this.x **= value;
+        return this;
+    }
+
+    getResult(){
+        return this.x;
+    }
+}
 
